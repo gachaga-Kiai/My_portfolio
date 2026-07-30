@@ -589,3 +589,318 @@ and Technology (JKUAT)
 </div>
 
 </section>
+  <!-- ================= FEATURED PROJECTS ================= -->
+
+<section>
+
+<h2 class="section-title">Featured Projects</h2>
+
+<div class="grid">
+
+<div class="card">
+
+<h3>🚗 Smart Roadside Assistance</h3>
+
+<p>
+
+A Django-powered roadside assistance platform integrating Google Maps,
+Twilio SMS, Firebase Authentication and geofencing for emergency vehicle
+assistance.
+
+</p>
+
+<a href="projects.html" class="btn">View Project</a>
+
+</div>
+
+<div class="card">
+
+<h3>🌾 TerraIntel Platform</h3>
+
+<p>
+
+An Agricultural Intelligence and Operations Platform for managing
+livestock, crop farming, finances, analytics and AI-powered
+recommendations.
+
+</p>
+
+<a href="projects.html" class="btn">View Project</a>
+
+</div>
+
+<div class="card">
+
+<h3>🤖 AI Vehicle Compliance</h3>
+
+<p>
+
+Machine Learning powered vehicle inspection system using Computer
+Vision to detect faulty headlights, missing mirrors and damaged
+tail lights.
+
+</p>
+
+<a href="projects.html" class="btn">View Project</a>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ================= QUICK STATS ================= -->
+
+<section>
+
+<h2 class="section-title">Quick Statistics</h2>
+
+<div class="stats">
+
+<div class="stat">
+
+<h2 id="projectsCount">6+</h2>
+
+<p>Projects Built</p>
+
+</div>
+
+<div class="stat">
+
+<h2>10+</h2>
+
+<p>Technologies Used</p>
+
+</div>
+
+<div class="stat">
+
+<h2>1+</h2>
+
+<p>Years Practical Experience</p>
+
+</div>
+
+<div class="stat">
+
+<h2>100%</h2>
+
+<p>Passion for Learning</p>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ================= CALL TO ACTION ================= -->
+
+<section>
+
+<div class="card" style="text-align:center;">
+
+<h2 style="color:#00d9ff;font-size:38px;margin-bottom:20px;">
+
+Let's Build Something Amazing
+
+</h2>
+
+<p style="max-width:700px;margin:auto;line-height:1.8;color:#ddd;">
+
+I'm always interested in collaborating on innovative software
+projects, internships, graduate opportunities and open-source
+initiatives.
+
+</p>
+
+<div style="margin-top:35px;display:flex;justify-content:center;gap:20px;flex-wrap:wrap;">
+
+<a href="projects.html" class="btn">
+
+View Projects
+
+</a>
+
+<a href="about.html" class="btn btn-outline">
+
+About Me
+
+</a>
+
+<a href="contact.html" class="btn">
+
+Contact Me
+
+</a>
+
+</div>
+
+</div>
+
+</section>
+
+</div>
+
+<!-- ================= FOOTER ================= -->
+
+<footer>
+
+<div class="container">
+
+<h2 style="color:#00d9ff;margin-bottom:15px;">
+
+Nicholas Kiai
+
+</h2>
+
+<p style="margin-bottom:25px;color:#ccc;">
+
+Software Engineer • Backend Developer • Linux Enthusiast
+
+</p>
+
+<div style="display:flex;justify-content:center;gap:30px;flex-wrap:wrap;margin-bottom:30px;">
+
+<a href="index.html" style="color:white;text-decoration:none;">Home</a>
+
+<a href="about.html" style="color:white;text-decoration:none;">About</a>
+
+<a href="projects.html" style="color:white;text-decoration:none;">Projects</a>
+
+<a href="contact.html" style="color:white;text-decoration:none;">Contact</a>
+
+</div>
+
+<p>
+
+© 2026 Nicholas Kiai. All Rights Reserved.
+
+</p>
+
+</div>
+
+</footer>
+
+<script>
+
+/* ===========================
+   PARTICLE BACKGROUND
+=========================== */
+
+const canvas=document.getElementById("network");
+const ctx=canvas.getContext("2d");
+
+function resizeCanvas(){
+
+canvas.width=window.innerWidth;
+canvas.height=window.innerHeight;
+
+}
+
+resizeCanvas();
+
+window.addEventListener("resize",resizeCanvas);
+
+const particles=[];
+
+for(let i=0;i<80;i++){
+
+particles.push({
+
+x:Math.random()*canvas.width,
+y:Math.random()*canvas.height,
+
+vx:(Math.random()-0.5)*0.8,
+vy:(Math.random()-0.5)*0.8,
+
+r:2
+
+});
+
+}
+
+function animate(){
+
+ctx.clearRect(0,0,canvas.width,canvas.height);
+
+particles.forEach((p,index)=>{
+
+p.x+=p.vx;
+p.y+=p.vy;
+
+if(p.x<0||p.x>canvas.width)p.vx*=-1;
+if(p.y<0||p.y>canvas.height)p.vy*=-1;
+
+ctx.beginPath();
+ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
+ctx.fillStyle="#00d9ff";
+ctx.fill();
+
+for(let j=index+1;j<particles.length;j++){
+
+const p2=particles[j];
+
+const dist=Math.hypot(
+
+p.x-p2.x,
+p.y-p2.y
+
+);
+
+if(dist<120){
+
+ctx.beginPath();
+ctx.moveTo(p.x,p.y);
+ctx.lineTo(p2.x,p2.y);
+ctx.strokeStyle="rgba(0,217,255,.12)";
+ctx.lineWidth=1;
+ctx.stroke();
+
+}
+
+}
+
+});
+
+requestAnimationFrame(animate);
+
+}
+
+animate();
+
+/* ===========================
+   SCROLL REVEAL
+=========================== */
+
+const reveal=document.querySelectorAll(".card,.stat");
+
+const observer=new IntersectionObserver(entries=>{
+
+entries.forEach(entry=>{
+
+if(entry.isIntersecting){
+
+entry.target.style.opacity="1";
+entry.target.style.transform="translateY(0)";
+
+}
+
+});
+
+},{threshold:.2});
+
+reveal.forEach(item=>{
+
+item.style.opacity="0";
+item.style.transform="translateY(40px)";
+item.style.transition=".8s ease";
+
+observer.observe(item);
+
+});
+
+</script>
+
+</body>
+
+</html>
