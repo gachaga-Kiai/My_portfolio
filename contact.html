@@ -1,305 +1,713 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact | Nicholas Kiai</title>
-    <style>
-        :root {
-            --primary-color: #3498db;
-            --secondary-color: #2ecc71;
-            --text-color: #333;
-            --bg-color: #f9f9f9;
-            --header-bg: rgba(255,255,255,0.9);
-            --footer-bg: rgba(238,238,238,0.9);
-            --link-color: #2980b9;
-            --content-bg: rgba(255,255,255,0.8);
-            --card-bg: rgba(255,255,255,0.9);
-        }
 
-        [data-theme="dark"] {
-            --primary-color: #9b59b6;
-            --secondary-color: #1abc9c;
-            --text-color: #ecf0f1;
-            --bg-color: #2c3e50;
-            --header-bg: rgba(26,37,47,0.9);
-            --footer-bg: rgba(26,37,47,0.9);
-            --link-color: #3498db;
-            --content-bg: rgba(44,62,80,0.8);
-            --card-bg: rgba(26,37,47,0.9);
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        body {
-            margin: 0;
-            padding: 0;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            color: var(--text-color);
-            background: linear-gradient(-45deg, var(--primary-color), var(--secondary-color), var(--primary-color));
-            background-size: 400% 400%;
-            animation: gradientBG 15s ease infinite;
-            min-height: 100vh;
-            transition: all 0.5s ease;
-        }
+<title>Contact | Nicholas Kiai</title>
 
-        @keyframes gradientBG {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-        header {
-            background-color: var(--header-bg);
-            padding: 1.5rem 2rem;
-            box-shadow: 0 2px 15px rgba(0,0,0,0.1);
-            backdrop-filter: blur(5px);
-        }
+<style>
 
-        h1 {
-            color: var(--primary-color);
-            margin: 0;
-        }
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+scroll-behavior:smooth;
+}
 
-        nav {
-            display: flex;
-            gap: 1.5rem;
-            margin-top: 1rem;
-        }
+body{
 
-        nav a {
-            text-decoration: none;
-            color: var(--link-color);
-            font-weight: 500;
-            transition: all 0.3s ease;
-            position: relative;
-        }
+font-family:'Poppins',sans-serif;
+background:linear-gradient(135deg,#0f2027,#203a43,#2c5364);
+color:white;
+overflow-x:hidden;
 
-        nav a:hover {
-            color: var(--secondary-color);
-        }
+}
 
-        nav a::after {
-            content: '';
-            position: absolute;
-            width: 0;
-            height: 2px;
-            bottom: -5px;
-            left: 0;
-            background-color: var(--secondary-color);
-            transition: width 0.3s ease;
-        }
+canvas{
 
-        nav a:hover::after {
-            width: 100%;
-        }
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+z-index:-2;
 
-        main {
-            padding: 2rem;
-            max-width: 800px;
-            margin: 2rem auto;
-        }
+}
 
-        .contact-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-        }
+body::before{
 
-        .contact-card {
-            background: var(--card-bg);
-            padding: 2rem;
-            border-radius: 10px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
-            backdrop-filter: blur(5px);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
+content:'';
+position:fixed;
+width:100%;
+height:100%;
+background:rgba(0,0,0,.45);
+z-index:-1;
 
-        .contact-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-        }
+}
 
-        .contact-card h2 {
-            color: var(--primary-color);
-            margin-top: 0;
-            border-bottom: 2px solid var(--secondary-color);
-            padding-bottom: 0.5rem;
-            display: inline-block;
-        }
+.container{
 
-        .contact-method {
-            margin-bottom: 1.5rem;
-        }
+width:90%;
+max-width:1200px;
+margin:auto;
 
-        .contact-method h3 {
-            color: var(--secondary-color);
-            margin-bottom: 0.5rem;
-        }
+}
 
-        .contact-method a {
-            color: var(--link-color);
-            text-decoration: none;
-            transition: all 0.3s ease;
-        }
+/* NAVIGATION */
 
-        .contact-method a:hover {
-            color: var(--primary-color);
-            text-decoration: underline;
-        }
+header{
 
-        footer {
-            background-color: var(--footer-bg);
-            text-align: center;
-            padding: 1.5rem;
-            backdrop-filter: blur(5px);
-        }
+position:fixed;
+top:0;
+width:100%;
+padding:18px 0;
+background:rgba(0,0,0,.35);
+backdrop-filter:blur(15px);
+z-index:999;
 
-        .theme-toggle {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            background: var(--header-bg);
-            border: none;
-            padding: 10px 15px;
-            border-radius: 50px;
-            cursor: pointer;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            color: var(--text-color);
-            transition: all 0.3s ease;
-            z-index: 1000;
-            backdrop-filter: blur(5px);
-        }
+}
 
-        .theme-toggle:hover {
-            transform: scale(1.05);
-            box-shadow: 0 3px 15px rgba(0,0,0,0.2);
-        }
+nav{
 
-        .theme-icon {
-            width: 20px;
-            height: 20px;
-        }
-    </style>
+display:flex;
+justify-content:space-between;
+align-items:center;
+
+}
+
+.logo{
+
+font-size:28px;
+font-weight:700;
+color:#00d9ff;
+text-shadow:0 0 10px #00d9ff;
+
+}
+
+nav ul{
+
+display:flex;
+list-style:none;
+
+}
+
+nav ul li{
+
+margin-left:35px;
+
+}
+
+nav ul li a{
+
+text-decoration:none;
+color:white;
+transition:.3s;
+
+}
+
+nav ul li a:hover{
+
+color:#00d9ff;
+
+}
+
+/* HERO */
+
+.hero{
+
+padding-top:150px;
+padding-bottom:80px;
+text-align:center;
+
+}
+
+.hero h1{
+
+font-size:58px;
+margin-bottom:20px;
+
+}
+
+.hero p{
+
+max-width:700px;
+margin:auto;
+font-size:18px;
+line-height:1.8;
+color:#ddd;
+
+}
+
+/* CONTACT GRID */
+
+.contact-grid{
+
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+gap:30px;
+margin-bottom:70px;
+
+}
+
+.card{
+
+background:rgba(255,255,255,.08);
+backdrop-filter:blur(12px);
+padding:35px;
+border-radius:20px;
+border:1px solid rgba(255,255,255,.08);
+transition:.4s;
+
+}
+
+.card:hover{
+
+transform:translateY(-10px);
+
+border-color:#00d9ff;
+
+box-shadow:0 0 30px rgba(0,217,255,.25);
+
+}
+
+.card h2{
+
+color:#00d9ff;
+margin-bottom:20px;
+
+}
+
+.card p{
+
+line-height:1.8;
+color:#ddd;
+
+}
+
+.card a{
+
+color:#00d9ff;
+text-decoration:none;
+
+}
+
+/* CONTACT FORM */
+
+.contact-form{
+
+background:rgba(255,255,255,.08);
+
+backdrop-filter:blur(12px);
+
+padding:40px;
+
+border-radius:20px;
+
+border:1px solid rgba(255,255,255,.08);
+
+margin-bottom:80px;
+
+}
+
+.contact-form h2{
+
+margin-bottom:30px;
+
+color:#00d9ff;
+
+}
+
+.input-group{
+
+margin-bottom:25px;
+
+}
+
+.input-group label{
+
+display:block;
+
+margin-bottom:10px;
+
+}
+
+.input-group input,
+
+.input-group textarea{
+
+width:100%;
+
+padding:15px;
+
+border:none;
+
+border-radius:10px;
+
+background:rgba(255,255,255,.08);
+
+color:white;
+
+outline:none;
+
+font-size:16px;
+
+border:1px solid rgba(255,255,255,.15);
+
+}
+
+.input-group textarea{
+
+height:180px;
+
+resize:none;
+
+}
+
+button{
+
+padding:14px 35px;
+
+border:none;
+
+border-radius:30px;
+
+background:#00d9ff;
+
+color:#00131b;
+
+font-weight:600;
+
+cursor:pointer;
+
+transition:.3s;
+
+}
+
+button:hover{
+
+box-shadow:0 0 20px #00d9ff;
+
+transform:translateY(-3px);
+
+}
+
+footer{
+
+padding:30px;
+
+text-align:center;
+
+background:rgba(0,0,0,.35);
+
+margin-top:50px;
+
+}
+
+/* RESPONSIVE */
+
+@media(max-width:900px){
+
+.hero h1{
+
+font-size:42px;
+
+}
+
+nav{
+
+flex-direction:column;
+
+}
+
+nav ul{
+
+margin-top:20px;
+flex-wrap:wrap;
+justify-content:center;
+
+}
+
+nav ul li{
+
+margin:10px;
+
+}
+
+}
+
+</style>
+
 </head>
+
 <body>
-    <button class="theme-toggle" aria-label="Toggle dark mode">
-        <svg class="theme-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M12 16C14.2091 16 16 14.2091 16 12C16 9.79086 14.2091 8 12 8C9.79086 8 8 9.79086 8 12C8 14.2091 9.79086 16 12 16Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-            <path d="M12 2V4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-            <path d="M12 20V22" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-            <path d="M4.92993 4.92999L6.33993 6.33999" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-            <path d="M17.6599 17.66L19.0699 19.07" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-            <path d="M2 12H4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-            <path d="M20 12H22" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-            <path d="M6.33993 17.66L4.92993 19.07" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-            <path d="M19.0699 4.92999L17.6599 6.33999" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
-        <span>Toggle Theme</span>
-    </button>
-    
-    <header>
-        <h1>Get In Touch</h1>
-        <nav>
-            <a href="index.html">Home</a>
-            <a href="projects.html">Projects</a>
-            <a href="about.html">About</a>
-            <a href="contact.html">Contact</a>
-        </nav>
-    </header>
 
-    <main>
-        <div class="contact-container">
-            <div class="contact-card">
-                <h2>Contact Information</h2>
-                <div class="contact-method">
-                    <h3>Email</h3>
-                    <a href="mailto:gachaganicholas@gmail.com">gachaganicholas@gmail.com</a>
-                </div>
-                <div class="contact-method">
-                    <h3>Phone</h3>
-                    <a href="tel:+254111604391">+254 111 604 391</a>
-                </div>
-                <div class="contact-method">
-                    <h3>Location</h3>
-                    <p>Nairobi, Kenya</p>
-                </div>
-            </div>
+<canvas id="network"></canvas>
 
-            <div class="contact-card">
-                <h2>Online Presence</h2>
-                <div class="contact-method">
-                    <h3>GitHub</h3>
-                    <a href="https://github.com/Nick-gachagay" target="_blank">github.com/Nick-gachagay</a>
-                </div>
-                <div class="contact-method">
-                    <h3>LinkedIn</h3>
-                    <a href="https://ke.linkedin.com/in/nicholas-kiai-45b549232" target="_blank">https://ke.linkedin.com/in/nicholas-kiai-45b549232</a>
-                </div>
-            
-            </div>
-        </div>
-    </main>
+<header>
 
-    <footer>
-        <p>&copy; 2025 Nicholas Kiai. All rights reserved.</p>
-    </footer>
+<div class="container">
 
-    <script>
-        // Theme toggle functionality
-        const themeToggle = document.querySelector('.theme-toggle');
-        const currentTheme = localStorage.getItem('theme') || 'light';
+<nav>
 
-        if (currentTheme === 'dark') {
-            document.body.setAttribute('data-theme', 'dark');
-            themeToggle.innerHTML = `
-                <svg class="theme-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M21 12.79C20.8427 14.4922 20.2039 16.1144 19.1582 17.4668C18.1126 18.8192 16.7035 19.8458 15.0957 20.4265C13.4879 21.0073 11.748 21.1181 10.0795 20.7461C8.41102 20.3741 6.88299 19.5345 5.67422 18.3258C4.46545 17.117 3.62593 15.589 3.2539 13.9205C2.88187 12.252 2.99271 10.5121 3.57345 8.9043C4.15419 7.29651 5.18082 5.88737 6.53321 4.84175C7.8856 3.79614 9.5078 3.15731 11.21 3C10.2134 4.34827 9.73375 6.00945 9.85849 7.68141C9.98324 9.35338 10.7039 10.9251 11.8894 12.1106C13.0749 13.2961 14.6466 14.0168 16.3186 14.1415C17.9906 14.2663 19.6517 13.7866 21 12.79Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
-                <span>Toggle Theme</span>
-            `;
-        }
+<div class="logo">
 
-        themeToggle.addEventListener('click', () => {
-            let theme = 'light';
-            if (document.body.getAttribute('data-theme') !== 'dark') {
-                document.body.setAttribute('data-theme', 'dark');
-                theme = 'dark';
-                themeToggle.innerHTML = `
-                    <svg class="theme-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M12 16C14.2091 16 16 14.2091 16 12C16 9.79086 14.2091 8 12 8C9.79086 8 8 9.79086 8 12C8 14.2091 9.79086 16 12 16Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                        <path d="M12 2V4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                        <path d="M12 20V22" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                        <path d="M4.92993 4.92999L6.33993 6.33999" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                        <path d="M17.6599 17.66L19.0699 19.07" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                        <path d="M2 12H4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                        <path d="M20 12H22" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                        <path d="M6.33993 17.66L4.92993 19.07" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                        <path d="M19.0699 4.92999L17.6599 6.33999" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                    </svg>
-                    <span>Toggle Theme</span>
-                `;
-            } else {
-                document.body.removeAttribute('data-theme');
-                themeToggle.innerHTML = `
-                    <svg class="theme-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M21 12.79C20.8427 14.4922 20.2039 16.1144 19.1582 17.4668C18.1126 18.8192 16.7035 19.8458 15.0957 20.4265C13.4879 21.0073 11.748 21.1181 10.0795 20.7461C8.41102 20.3741 6.88299 19.5345 5.67422 18.3258C4.46545 17.117 3.62593 15.589 3.2539 13.9205C2.88187 12.252 2.99271 10.5121 3.57345 8.9043C4.15419 7.29651 5.18082 5.88737 6.53321 4.84175C7.8856 3.79614 9.5078 3.15731 11.21 3C10.2134 4.34827 9.73375 6.00945 9.85849 7.68141C9.98324 9.35338 10.7039 10.9251 11.8894 12.1106C13.0749 13.2961 14.6466 14.0168 16.3186 14.1415C17.9906 14.2663 19.6517 13.7866 21 12.79Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                    </svg>
-                    <span>Toggle Theme</span>
-                `;
-            }
-            localStorage.setItem('theme', theme);
-        });
+Nicholas Kiai
 
-        // Enhanced background interaction
-        document.addEventListener('mousemove', function() {
-            const x = event.clientX / window.innerWidth;
-            const y = event.clientY / window.innerHeight;
-            
-            document.body.style.setProperty('--primary-color', `hsl(${x * 360}, 70%, 60%)`);
-            document.body.style.setProperty('--secondary-color', `hsl(${y * 360}, 70%, 60%)`);
-        });
-    </script>
+</div>
+
+<ul>
+
+<li><a href="index.html">Home</a></li>
+<li><a href="about.html">About</a></li>
+<li><a href="projects.html">Projects</a></li>
+<li><a href="contact.html">Contact</a></li>
+
+</ul>
+
+</nav>
+
+</div>
+
+</header>
+
+<div class="container">
+
+<section class="hero">
+
+<h1>Let's Connect</h1>
+
+<p>
+
+Whether you have a project, collaboration opportunity, internship,
+or simply want to say hello, feel free to reach out.
+
+I'm always open to discussing software development,
+technology and innovative ideas.
+
+</p>
+
+</section>
+
+<div class="contact-grid">
+
+<div class="card">
+
+<h2>📧 Email</h2>
+
+<p>
+
+<a href="mailto:your@email.com">
+
+your@email.com
+
+</a>
+
+</p>
+
+</div>
+
+<div class="card">
+
+<h2>📱 Phone</h2>
+
+<p>
+
++254 7XX XXX XXX
+
+</p>
+
+</div>
+
+<div class="card">
+
+<h2>📍 Location</h2>
+
+<p>
+
+Nairobi, Kenya
+
+</p>
+
+</div>
+
+<div class="card">
+
+<h2>💼 LinkedIn</h2>
+
+<p>
+
+<a href="#">
+
+linkedin.com/in/yourprofile
+
+</a>
+
+</p>
+
+</div>
+
+<div class="card">
+
+<h2>🐙 GitHub</h2>
+
+<p>
+
+<a href="https://github.com/Nick-gachagay" target="_blank">
+
+github.com/Nick-gachagay
+
+</a>
+
+</p>
+
+</div>
+
+<div class="card">
+
+<h2>🌐 Portfolio</h2>
+
+<p>
+
+nicholaskiai.dev
+
+</p>
+
+</div>
+
+</div>
+
+<div class="contact-form">
+
+<h2>Send Me a Message</h2>
+
+<form>
+
+<div class="input-group">
+
+<label>Full Name</label>
+
+<input
+type="text"
+placeholder="Enter your full name"
+required>
+
+</div>
+
+<div class="input-group">
+
+<label>Email Address</label>
+
+<input
+type="email"
+placeholder="Enter your email"
+required>
+
+</div>
+
+<div class="input-group">
+
+<label>Subject</label>
+
+<input
+type="text"
+placeholder="Message subject"
+required>
+
+</div>
+
+<div class="input-group">
+
+<label>Message</label>
+
+<textarea
+placeholder="Write your message..."
+required></textarea>
+
+</div>
+
+<button type="submit">
+
+Send Message
+
+</button>
+
+</form>
+
+</div>
+<footer>
+
+<p>
+
+© 2026 Nicholas Kiai | Designed & Developed by Nicholas Kiai
+
+</p>
+
+</footer>
+
+<script>
+
+/* ===========================
+   PARTICLE NETWORK BACKGROUND
+=========================== */
+
+const canvas = document.getElementById("network");
+const ctx = canvas.getContext("2d");
+
+function resizeCanvas(){
+
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+
+}
+
+resizeCanvas();
+
+window.addEventListener("resize", resizeCanvas);
+
+const particles = [];
+
+const particleCount = 80;
+
+for(let i=0;i<particleCount;i++){
+
+particles.push({
+
+x:Math.random()*canvas.width,
+y:Math.random()*canvas.height,
+
+vx:(Math.random()-0.5)*0.8,
+vy:(Math.random()-0.5)*0.8,
+
+radius:2
+
+});
+
+}
+
+function animate(){
+
+ctx.clearRect(0,0,canvas.width,canvas.height);
+
+particles.forEach((p,index)=>{
+
+p.x+=p.vx;
+p.y+=p.vy;
+
+if(p.x<0 || p.x>canvas.width) p.vx*=-1;
+if(p.y<0 || p.y>canvas.height) p.vy*=-1;
+
+ctx.beginPath();
+ctx.arc(p.x,p.y,p.radius,0,Math.PI*2);
+ctx.fillStyle="#00d9ff";
+ctx.fill();
+
+for(let j=index+1;j<particles.length;j++){
+
+const p2=particles[j];
+
+const distance=Math.hypot(
+
+p.x-p2.x,
+p.y-p2.y
+
+);
+
+if(distance<120){
+
+ctx.beginPath();
+
+ctx.moveTo(p.x,p.y);
+ctx.lineTo(p2.x,p2.y);
+
+ctx.strokeStyle="rgba(0,217,255,0.12)";
+ctx.lineWidth=1;
+
+ctx.stroke();
+
+}
+
+}
+
+});
+
+requestAnimationFrame(animate);
+
+}
+
+animate();
+
+/* ===========================
+   CONTACT FORM
+=========================== */
+
+const form=document.querySelector("form");
+
+form.addEventListener("submit",function(e){
+
+e.preventDefault();
+
+const button=form.querySelector("button");
+
+button.innerHTML="✓ Message Sent";
+
+button.style.background="#00ff99";
+
+setTimeout(()=>{
+
+button.innerHTML="Send Message";
+
+button.style.background="#00d9ff";
+
+form.reset();
+
+},2500);
+
+});
+
+/* ===========================
+   SCROLL REVEAL
+=========================== */
+
+const cards=document.querySelectorAll(".card,.contact-form");
+
+const observer=new IntersectionObserver(entries=>{
+
+entries.forEach(entry=>{
+
+if(entry.isIntersecting){
+
+entry.target.style.opacity="1";
+entry.target.style.transform="translateY(0)";
+
+}
+
+});
+
+},
+
+{
+
+threshold:.2
+
+});
+
+cards.forEach(card=>{
+
+card.style.opacity="0";
+card.style.transform="translateY(40px)";
+card.style.transition=".8s ease";
+
+observer.observe(card);
+
+});
+
+</script>
+
 </body>
+
 </html>
