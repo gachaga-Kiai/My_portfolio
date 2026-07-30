@@ -565,3 +565,254 @@ System and assisting staff with ICT-related issues.
 </div>
 
 </section>
+
+  <!-- Optional Google Map -->
+
+<section style="margin-bottom:80px;">
+
+<h2 style="text-align:center;color:#00d9ff;margin-bottom:30px;">
+
+Find Me
+
+</h2>
+
+<div style="border-radius:20px;overflow:hidden;border:1px solid rgba(255,255,255,.1);">
+
+<iframe
+
+src="https://www.google.com/maps?q=Nairobi,Kenya&output=embed"
+
+width="100%"
+
+height="400"
+
+style="border:0;"
+
+allowfullscreen=""
+
+loading="lazy"
+
+referrerpolicy="no-referrer-when-downgrade">
+
+</iframe>
+
+</div>
+
+</section>
+
+</div>
+
+<footer>
+
+<div class="container">
+
+<h2 style="color:#00d9ff;margin-bottom:15px;">
+
+Nicholas Kiai
+
+</h2>
+
+<p style="margin-bottom:20px;color:#ccc;">
+
+Software Engineer • Backend Developer • Linux Enthusiast
+
+</p>
+
+<div style="display:flex;justify-content:center;gap:30px;flex-wrap:wrap;margin-bottom:25px;">
+
+<a href="index.html" style="text-decoration:none;color:white;">Home</a>
+
+<a href="about.html" style="text-decoration:none;color:white;">About</a>
+
+<a href="projects.html" style="text-decoration:none;color:white;">Projects</a>
+
+<a href="contact.html" style="text-decoration:none;color:white;">Contact</a>
+
+</div>
+
+<p>
+
+© 2026 Nicholas Kiai. All Rights Reserved.
+
+</p>
+
+</div>
+
+</footer>
+
+<script>
+
+/* ===============================
+   PARTICLE BACKGROUND
+================================= */
+
+const canvas = document.getElementById("network");
+const ctx = canvas.getContext("2d");
+
+function resizeCanvas(){
+
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+
+}
+
+resizeCanvas();
+
+window.addEventListener("resize", resizeCanvas);
+
+const particles=[];
+
+for(let i=0;i<80;i++){
+
+particles.push({
+
+x:Math.random()*canvas.width,
+
+y:Math.random()*canvas.height,
+
+vx:(Math.random()-0.5)*0.8,
+
+vy:(Math.random()-0.5)*0.8,
+
+r:2
+
+});
+
+}
+
+function animate(){
+
+ctx.clearRect(0,0,canvas.width,canvas.height);
+
+particles.forEach((p,index)=>{
+
+p.x+=p.vx;
+p.y+=p.vy;
+
+if(p.x<0||p.x>canvas.width)p.vx*=-1;
+if(p.y<0||p.y>canvas.height)p.vy*=-1;
+
+ctx.beginPath();
+ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
+ctx.fillStyle="#00d9ff";
+ctx.fill();
+
+for(let j=index+1;j<particles.length;j++){
+
+const p2=particles[j];
+
+const dist=Math.hypot(
+
+p.x-p2.x,
+
+p.y-p2.y
+
+);
+
+if(dist<120){
+
+ctx.beginPath();
+
+ctx.moveTo(p.x,p.y);
+
+ctx.lineTo(p2.x,p2.y);
+
+ctx.strokeStyle="rgba(0,217,255,.12)";
+
+ctx.lineWidth=1;
+
+ctx.stroke();
+
+}
+
+}
+
+});
+
+requestAnimationFrame(animate);
+
+}
+
+animate();
+
+/* ===============================
+   FORM ANIMATION
+================================= */
+
+const form=document.querySelector("form");
+
+form.addEventListener("submit",function(e){
+
+e.preventDefault();
+
+const btn=form.querySelector("button");
+
+btn.innerHTML="✓ Message Sent";
+
+btn.style.background="#00ff99";
+
+setTimeout(()=>{
+
+btn.innerHTML="Send Message";
+
+btn.style.background="#00d9ff";
+
+form.reset();
+
+},2500);
+
+});
+
+/* ===============================
+   SCROLL REVEAL
+================================= */
+
+const revealItems=document.querySelectorAll(".card,.contact-form");
+
+const observer=new IntersectionObserver((entries)=>{
+
+entries.forEach(entry=>{
+
+if(entry.isIntersecting){
+
+entry.target.style.opacity="1";
+entry.target.style.transform="translateY(0)";
+
+}
+
+});
+
+},{threshold:.2});
+
+revealItems.forEach(item=>{
+
+item.style.opacity="0";
+item.style.transform="translateY(40px)";
+item.style.transition=".8s ease";
+
+observer.observe(item);
+
+});
+
+/* ===============================
+   ACTIVE NAVIGATION
+================================= */
+
+const currentPage=window.location.pathname.split("/").pop();
+
+document.querySelectorAll("nav a").forEach(link=>{
+
+if(link.getAttribute("href")===currentPage){
+
+link.style.color="#00d9ff";
+link.style.fontWeight="600";
+
+}
+
+});
+
+</script>
+
+</body>
+
+</html>
