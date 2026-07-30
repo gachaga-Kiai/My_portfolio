@@ -1,304 +1,567 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About | Nicholas Kiai</title>
-    <style>
-        :root {
-            --primary-color: #3498db;
-            --secondary-color: #2ecc71;
-            --text-color: #333;
-            --bg-color: #f9f9f9;
-            --header-bg: rgba(255,255,255,0.9);
-            --footer-bg: rgba(238,238,238,0.9);
-            --link-color: #2980b9;
-            --content-bg: rgba(255,255,255,0.8);
-        }
 
-        [data-theme="dark"] {
-            --primary-color: #9b59b6;
-            --secondary-color: #1abc9c;
-            --text-color: #ecf0f1;
-            --bg-color: #2c3e50;
-            --header-bg: rgba(26,37,47,0.9);
-            --footer-bg: rgba(26,37,47,0.9);
-            --link-color: #3498db;
-            --content-bg: rgba(44,62,80,0.8);
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        body {
-            margin: 0;
-            padding: 0;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            color: var(--text-color);
-            background: linear-gradient(-45deg, var(--primary-color), var(--secondary-color), var(--primary-color));
-            background-size: 400% 400%;
-            animation: gradientBG 15s ease infinite;
-            min-height: 100vh;
-            transition: all 0.5s ease;
-        }
+<title>About | Nicholas Kiai</title>
 
-        @keyframes gradientBG {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-        header {
-            background-color: var(--header-bg);
-            padding: 1.5rem 2rem;
-            box-shadow: 0 2px 15px rgba(0,0,0,0.1);
-            backdrop-filter: blur(5px);
-        }
+<style>
 
-        nav a {
-            margin-left: 15px;
-            color: var(--link-color);
-            text-decoration: none;
-            font-weight: 500;
-            transition: all 0.3s ease;
-        }
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+scroll-behavior:smooth;
+}
 
-        nav a:hover {
-            color: var(--secondary-color);
-        }
+body{
 
-        main {
-            padding: 2rem;
-            max-width: 1000px;
-            margin: 2rem auto;
-        }
+font-family:'Poppins',sans-serif;
+background:#0f2027;
+background:linear-gradient(135deg,#0f2027,#203a43,#2c5364);
+color:white;
+overflow-x:hidden;
 
-        section {
-            background-color: var(--content-bg);
-            padding: 2rem;
-            border-radius: 10px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
-            backdrop-filter: blur(5px);
-            margin-bottom: 2rem;
-        }
+}
 
-        h1, h2 {
-            color: var(--primary-color);
-        }
+canvas{
 
-        .profile-header {
-            text-align: center;
-            margin-bottom: 2rem;
-        }
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+z-index:-2;
 
-        .profile-header h1 {
-            font-size: 2.5rem;
-            margin-bottom: 0.5rem;
-        }
+}
 
-        .profile-header p {
-            font-size: 1.2rem;
-            color: var(--text-color);
-        }
+body::before{
 
-        .cv-summary {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-        }
+content:'';
+position:fixed;
+width:100%;
+height:100%;
+background:rgba(0,0,0,.45);
+z-index:-1;
 
-        .summary-card {
-            background: rgba(255,255,255,0.1);
-            padding: 1.5rem;
-            border-radius: 8px;
-            border-left: 4px solid var(--primary-color);
-            transition: transform 0.3s ease;
-        }
+}
 
-        .summary-card:hover {
-            transform: translateY(-5px);
-        }
+.container{
 
-        .summary-card h3 {
-            margin-top: 0;
-            color: var(--primary-color);
-            border-bottom: 1px solid rgba(0,0,0,0.1);
-            padding-bottom: 0.5rem;
-        }
+width:90%;
+max-width:1200px;
+margin:auto;
 
-        .experience-item, .education-item {
-            margin-bottom: 1.5rem;
-        }
+}
 
-        .item-header {
-            display: flex;
-            justify-content: space-between;
-            font-weight: bold;
-            margin-bottom: 0.5rem;
-        }
+/* ================= NAVBAR ================= */
 
-        .skills-container {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.8rem;
-            margin-top: 1rem;
-        }
+header{
 
-        .skill-pill {
-            padding: 0.5rem 1rem;
-            background: var(--primary-color);
-            color: white;
-            border-radius: 20px;
-            font-size: 0.9rem;
-        }
+position:fixed;
+top:0;
+width:100%;
+padding:18px 0;
+background:rgba(0,0,0,.35);
+backdrop-filter:blur(15px);
+z-index:999;
 
-        .download-cv {
-            display: inline-block;
-            padding: 0.8rem 1.5rem;
-            background: var(--secondary-color);
-            color: white;
-            text-decoration: none;
-            border-radius: 5px;
-            font-weight: bold;
-            margin-top: 1rem;
-            transition: all 0.3s ease;
-        }
+}
 
-        .download-cv:hover {
-            background: #27ae60;
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-        }
+nav{
 
-        footer {
-            background-color: var(--footer-bg);
-            text-align: center;
-            padding: 1.5rem;
-            backdrop-filter: blur(5px);
-        }
-    </style>
+display:flex;
+justify-content:space-between;
+align-items:center;
+
+}
+
+.logo{
+
+font-size:28px;
+font-weight:700;
+color:#00d9ff;
+text-shadow:0 0 12px #00d9ff;
+
+}
+
+nav ul{
+
+display:flex;
+list-style:none;
+
+}
+
+nav ul li{
+
+margin-left:35px;
+
+}
+
+nav ul li a{
+
+text-decoration:none;
+color:white;
+font-weight:500;
+transition:.3s;
+
+}
+
+nav ul li a:hover{
+
+color:#00d9ff;
+
+}
+
+/* ================= HERO ================= */
+
+.hero{
+
+min-height:90vh;
+display:flex;
+justify-content:space-between;
+align-items:center;
+gap:60px;
+padding-top:140px;
+padding-bottom:70px;
+flex-wrap:wrap;
+
+}
+
+.hero-image{
+
+flex:1;
+display:flex;
+justify-content:center;
+
+}
+
+.photo{
+
+position:relative;
+width:330px;
+height:330px;
+border-radius:50%;
+padding:8px;
+background:linear-gradient(45deg,#00d9ff,#0077ff,#00d9ff);
+animation:spin 10s linear infinite;
+
+}
+
+.photo img{
+
+width:100%;
+height:100%;
+object-fit:cover;
+border-radius:50%;
+border:6px solid #081c28;
+
+}
+
+.photo::after{
+
+content:'';
+position:absolute;
+top:-15px;
+left:-15px;
+right:-15px;
+bottom:-15px;
+border-radius:50%;
+border:2px solid rgba(0,217,255,.3);
+animation:pulse 2s infinite;
+
+}
+
+@keyframes spin{
+
+100%{
+
+transform:rotate(360deg);
+
+}
+
+}
+
+@keyframes pulse{
+
+0%{
+
+transform:scale(.95);
+opacity:.8;
+
+}
+
+100%{
+
+transform:scale(1.12);
+opacity:0;
+
+}
+
+}
+
+.hero-content{
+
+flex:1;
+
+}
+
+.hero-content h3{
+
+color:#00d9ff;
+font-weight:400;
+margin-bottom:10px;
+
+}
+
+.hero-content h1{
+
+font-size:54px;
+margin-bottom:20px;
+
+}
+
+.hero-content p{
+
+font-size:18px;
+line-height:1.8;
+color:#d8d8d8;
+
+}
+
+.btn{
+
+display:inline-block;
+margin-top:35px;
+padding:14px 30px;
+border-radius:40px;
+background:#00d9ff;
+color:#081c28;
+font-weight:600;
+text-decoration:none;
+transition:.4s;
+
+}
+
+.btn:hover{
+
+transform:translateY(-5px);
+box-shadow:0 0 20px #00d9ff;
+
+}
+
+/* ================= SECTIONS ================= */
+
+section{
+
+padding:80px 0;
+
+}
+
+.section-title{
+
+text-align:center;
+font-size:40px;
+margin-bottom:60px;
+color:#00d9ff;
+
+}
+
+/* ================= GLASS CARD ================= */
+
+.card{
+
+background:rgba(255,255,255,.08);
+padding:35px;
+border-radius:20px;
+backdrop-filter:blur(12px);
+border:1px solid rgba(255,255,255,.1);
+transition:.4s;
+
+}
+
+.card:hover{
+
+transform:translateY(-8px);
+border-color:#00d9ff;
+box-shadow:0 0 30px rgba(0,217,255,.25);
+
+}
+
+.grid{
+
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+gap:30px;
+
+}
+
+/* ================= TIMELINE ================= */
+
+.timeline{
+
+position:relative;
+margin-top:40px;
+
+}
+
+.timeline::before{
+
+content:'';
+position:absolute;
+left:22px;
+top:0;
+bottom:0;
+width:3px;
+background:#00d9ff;
+
+}
+
+.timeline-item{
+
+position:relative;
+padding-left:70px;
+margin-bottom:50px;
+
+}
+
+.timeline-item::before{
+
+content:'';
+position:absolute;
+left:10px;
+top:8px;
+width:25px;
+height:25px;
+border-radius:50%;
+background:#00d9ff;
+box-shadow:0 0 15px #00d9ff;
+
+}
+
+.timeline-item h3{
+
+color:#00d9ff;
+margin-bottom:8px;
+
+}
+
+.timeline-item span{
+
+color:#8edfff;
+font-size:14px;
+
+}
+
+.timeline-item p{
+
+margin-top:15px;
+line-height:1.8;
+color:#ddd;
+
+}
+
+/* ================= RESPONSIVE ================= */
+
+@media(max-width:900px){
+
+.hero{
+
+flex-direction:column;
+text-align:center;
+
+}
+
+.hero-content h1{
+
+font-size:42px;
+
+}
+
+.photo{
+
+width:260px;
+height:260px;
+
+}
+
+nav{
+
+flex-direction:column;
+
+}
+
+nav ul{
+
+margin-top:20px;
+flex-wrap:wrap;
+justify-content:center;
+
+}
+
+nav ul li{
+
+margin:10px;
+
+}
+
+}
+
+</style>
+
 </head>
+
 <body>
-    <header>
-        <h1>Nicholas Kiai</h1>
-        <nav>
-            <a href="index.html">Home</a>
-            <a href="projects.html">Projects</a>
-            <a href="about.html">About</a>
-            <a href="contact.html">Contact</a>
-        </nav>
-    </header>
 
-    <main>
-        <section class="profile-header">
-            <h1>Nicholas Gachaga Kiai</h1>
-            <p>Business Computing Graduate | Frontend Developer | Backend Developer | Linux Enthusiast</p>
-            <a href="CV_Nicholas_Kiai (1) (1).pdf" class="download-cv" download>view Full CV</a>
-        </section>
+<canvas id="network"></canvas>
 
-            <h2>Professional Summary</h2>
-            <div class="cv-summary">
-                <div class="summary-card">
-                    <h3>Experience</h3>
-                    <div class="experience-item">
-                        <div class="item-header">
-                            <span>ICT Intern</span>
-                            <span>May 2024 - Aug 2024</span>
-                        </div>
-                        <div>Judiciary - Thika Law Courts</div>
-                        <p>Developed hands-on experience in e-filing systems, network maintenance, and IT support services.</p>
-                    </div>
-                </div>
+<header>
 
-                <div class="summary-card">
-                    <h3>Education</h3>
-                    <div class="education-item">
-                        <div class="item-header">
-                            <span>BSc Business Computing</span>
-                            <span>2021 - 2025</span>
-                        </div>
-                        <div>Jomo Kenyatta University of Agriculture and Technology</div>
-                        <p>Specialized in frontend systems, backend systems, security, and custom OS development.</p>
-                    </div>
-                </div>
+<div class="container">
 
-                <div class="summary-card">
-                    <h3>Key Projects</h3>
-                    <div class="experience-item">
-                        <div class="item-header">
-                            <span>Smart Roadside Assistance</span>
-                            <span>2025</span>
-                        </div>
-                        <p>Web platform integrating geofencing and real-time notifications.</p>
-                    </div>
-                    <div class="experience-item">
-                        <div class="item-header">
-                            <span>USSD Vehicle Verification</span>
-                            <span>2024</span>
-                        </div>
-                        <p>Offline vehicle status verification system.</p>
-                    </div>
-                </div>
+<nav>
 
-                <div class="summary-card">
-                    <h3>Technical Skills</h3>
-                    <div class="skills-container">
-                        <span class="skill-pill">Python/Django</span>
-                        <span class="skill-pill">Linux Systems</span>
-                        <span class="skill-pill">Web Development</span>
-                        <span class="skill-pill">AWS</span>
-                        <span class="skill-pill">HTML/CSS</span>
-                        <span class="skill-pill">MySQL</span>
-                        <span class="skill-pill">Network Security</span>
-                        <span class="skill-pill">Problem Solving</span>
-                    </div>
-                </div>
-            </div>
-        </section>
+<div class="logo">Nicholas Kiai</div>
 
-        <section>
-            <h2>Career Aspirations</h2>
-            <p>I am passionate about building secure, efficient backend systems and custom Linux solutions. My goal is to leverage my skills in Python, Django, and system architecture to develop innovative solutions that solve real-world problems.</p>
-            <p>With my combination of technical expertise and business acumen from my Business Computing degree, I aim to bridge the gap between technology and business needs, creating systems that are both technically robust and commercially viable.</p>
-            <a href="CV_Nicholas_Kiai (1) (1).pdf" class="download-cv" download>view Full CV</a>
-        </section>
-    </main>
+<ul>
 
-    <footer>
-        <p>&copy; 2025 Nicholas Kiai. All rights reserved.</p>
-    </footer>
+<li><a href="index.html">Home</a></li>
+<li><a href="about.html">About</a></li>
+<li><a href="projects.html">Projects</a></li>
+<li><a href="contact.html">Contact</a></li>
 
-    <script>
-        // Simple theme toggle (same as index.html)
-        const toggleTheme = () => {
-            const body = document.body;
-            if (body.getAttribute('data-theme') === 'dark') {
-                body.removeAttribute('data-theme');
-                localStorage.setItem('theme', 'light');
-            } else {
-                body.setAttribute('data-theme', 'dark');
-                localStorage.setItem('theme', 'dark');
-            }
-        };
+</ul>
 
-        // Check for saved theme preference
-        if (localStorage.getItem('theme') === 'dark') {
-            document.body.setAttribute('data-theme', 'dark');
-        }
+</nav>
 
-        // Add event listener to a potential theme toggle button
-        document.addEventListener('DOMContentLoaded', () => {
-            const themeBtn = document.createElement('button');
-            themeBtn.innerHTML = 'Toggle Theme';
-            themeBtn.style.position = 'fixed';
-            themeBtn.style.bottom = '20px';
-            themeBtn.style.right = '20px';
-            themeBtn.style.padding = '10px 15px';
-            themeBtn.style.background = 'var(--primary-color)';
-            themeBtn.style.color = 'white';
-            themeBtn.style.border = 'none';
-            themeBtn.style.borderRadius = '5px';
-            themeBtn.style.cursor = 'pointer';
-            themeBtn.addEventListener('click', toggleTheme);
-            document.body.appendChild(themeBtn);
-        });
-    </script>
-</body>
-</html>
+</div>
+
+</header>
+
+<div class="container">
+
+<section class="hero">
+
+<div class="hero-image">
+
+<div class="photo">
+
+<img src="images/profile.jpg" alt="Nicholas Kiai">
+
+</div>
+
+</div>
+
+<div class="hero-content">
+
+<h3>Who Am I?</h3>
+
+<h1>About Me</h1>
+
+<p>
+
+I'm <strong>Nicholas Gachaga Kiai</strong>, a Business Computing graduate with
+a passion for software engineering, Linux systems, networking, cloud
+computing and backend development.
+
+I enjoy designing modern web applications, solving complex technical
+problems and building intelligent software that creates real impact.
+
+My goal is to become a world-class Software Engineer focused on scalable,
+secure and innovative technologies.
+
+</p>
+
+<a href="CV_Nicholas_Kiai.pdf" class="btn" download>
+
+Download CV
+
+</a>
+
+</div>
+
+</section>
+
+<section>
+
+<h2 class="section-title">
+
+Education
+
+</h2>
+
+<div class="timeline">
+
+<div class="timeline-item">
+
+<h3>
+
+Bachelor of Science in Business Computing
+
+</h3>
+
+<span>
+
+2021 – 2025
+
+</span>
+
+<p>
+
+Jomo Kenyatta University of Agriculture and Technology (JKUAT).
+
+Focused on Software Development, Database Systems, Networking,
+Information Security, Systems Analysis, Linux Administration,
+Business Information Systems and Cloud Computing.
+
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+<section>
+
+<h2 class="section-title">
+
+Professional Experience
+
+</h2>
+
+<div class="timeline">
+
+<div class="timeline-item">
+
+<h3>
+
+ICT Intern – Judiciary of Kenya
+
+</h3>
+
+<span>
+
+May 2024 – August 2024
+
+</span>
+
+<p>
+
+Worked at Thika Law Courts providing technical support,
+maintaining computer systems, configuring printers,
+troubleshooting networks, supporting the Judiciary e-Filing
+System and assisting staff with ICT-related issues.
+
+</p>
+
+</div>
+
+</div>
+
+</section>
