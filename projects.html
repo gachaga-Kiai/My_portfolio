@@ -1,499 +1,504 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Projects | Nicholas Kiai</title>
-    <style>
-        :root {
-            --primary-color: #3498db;
-            --secondary-color: #2ecc71;
-            --text-color: #333;
-            --bg-color: #f9f9f9;
-            --header-bg: rgba(255,255,255,0.9);
-            --footer-bg: rgba(238,238,238,0.9);
-            --link-color: #2980b9;
-            --content-bg: rgba(255,255,255,0.8);
-            --card-bg: rgba(255,255,255,0.9);
-        }
 
-        [data-theme="dark"] {
-            --primary-color: #9b59b6;
-            --secondary-color: #1abc9c;
-            --text-color: #ecf0f1;
-            --bg-color: #2c3e50;
-            --header-bg: rgba(26,37,47,0.9);
-            --footer-bg: rgba(26,37,47,0.9);
-            --link-color: #3498db;
-            --content-bg: rgba(44,62,80,0.8);
-            --card-bg: rgba(26,37,47,0.9);
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        body {
-            margin: 0;
-            padding: 0;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            color: var(--text-color);
-            background: linear-gradient(-45deg, var(--primary-color), var(--secondary-color), var(--primary-color));
-            background-size: 400% 400%;
-            animation: gradientBG 15s ease infinite;
-            min-height: 100vh;
-            transition: all 0.5s ease;
-        }
+<title>Projects | Nicholas Kiai</title>
 
-        @keyframes gradientBG {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-        header {
-            background-color: var(--header-bg);
-            padding: 1.5rem 2rem;
-            box-shadow: 0 2px 15px rgba(0,0,0,0.1);
-            backdrop-filter: blur(5px);
-        }
+<style>
 
-        h1 {
-            color: var(--primary-color);
-            margin: 0;
-        }
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+scroll-behavior:smooth;
+}
 
-        nav {
-            display: flex;
-            gap: 1.5rem;
-            margin-top: 1rem;
-        }
+body{
 
-        nav a {
-            text-decoration: none;
-            color: var(--link-color);
-            font-weight: 500;
-            transition: all 0.3s ease;
-            position: relative;
-        }
+font-family:'Poppins',sans-serif;
+background:linear-gradient(135deg,#0f2027,#203a43,#2c5364);
+color:white;
+overflow-x:hidden;
 
-        nav a:hover {
-            color: var(--secondary-color);
-        }
+}
 
-        nav a::after {
-            content: '';
-            position: absolute;
-            width: 0;
-            height: 2px;
-            bottom: -5px;
-            left: 0;
-            background-color: var(--secondary-color);
-            transition: width 0.3s ease;
-        }
+canvas{
 
-        nav a:hover::after {
-            width: 100%;
-        }
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+z-index:-2;
 
-        main {
-            padding: 2rem;
-            max-width: 1200px;
-            margin: 2rem auto;
-        }
+}
 
-        .projects-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-            gap: 2rem;
-        }
+body::before{
 
-        .project-card {
-            background: var(--card-bg);
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            backdrop-filter: blur(5px);
-        }
+content:'';
+position:fixed;
+width:100%;
+height:100%;
+background:rgba(0,0,0,.45);
+z-index:-1;
 
-        .project-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
-        }
+}
 
-        .project-image {
-            height: 200px;
-            overflow: hidden;
-            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 1.5rem;
-            font-weight: bold;
-        }
+.container{
 
-        .project-content {
-            padding: 1.5rem;
-        }
+width:90%;
+max-width:1200px;
+margin:auto;
 
-        .project-content h2 {
-            color: var(--primary-color);
-            margin-top: 0;
-            margin-bottom: 0.5rem;
-        }
+}
 
-        .project-content p {
-            margin-bottom: 1.5rem;
-            line-height: 1.6;
-        }
+/* NAVBAR */
 
-        .project-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-            margin-bottom: 1.5rem;
-        }
+header{
 
-        .project-tag {
-            background-color: var(--primary-color);
-            color: white;
-            padding: 0.3rem 0.8rem;
-            border-radius: 50px;
-            font-size: 0.8rem;
-            font-weight: 500;
-        }
+position:fixed;
+width:100%;
+top:0;
+padding:18px 0;
+background:rgba(0,0,0,.35);
+backdrop-filter:blur(15px);
+z-index:999;
 
-        .project-links {
-            display: flex;
-            gap: 1rem;
-        }
+}
 
-        .project-link {
-            display: inline-block;
-            padding: 0.6rem 1.2rem;
-            background-color: var(--primary-color);
-            color: white;
-            text-decoration: none;
-            border-radius: 5px;
-            transition: all 0.3s ease;
-            font-weight: 500;
-        }
+nav{
 
-        .project-link:hover {
-            background-color: var(--secondary-color);
-            transform: translateY(-2px);
-        }
+display:flex;
+justify-content:space-between;
+align-items:center;
 
-        .project-link.secondary {
-            background-color: transparent;
-            border: 2px solid var(--primary-color);
-            color: var(--primary-color);
-        }
+}
 
-        .project-link.secondary:hover {
-            border-color: var(--secondary-color);
-            color: var(--secondary-color);
-        }
+.logo{
 
-        footer {
-            background-color: var(--footer-bg);
-            text-align: center;
-            padding: 1.5rem;
-            backdrop-filter: blur(5px);
-        }
+font-size:28px;
+font-weight:700;
+color:#00d9ff;
+text-shadow:0 0 10px #00d9ff;
 
-        .theme-toggle {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            background: var(--header-bg);
-            border: none;
-            padding: 10px 15px;
-            border-radius: 50px;
-            cursor: pointer;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            color: var(--text-color);
-            transition: all 0.3s ease;
-            z-index: 1000;
-            backdrop-filter: blur(5px);
-        }
+}
 
-        .theme-toggle:hover {
-            transform: scale(1.05);
-            box-shadow: 0 3px 15px rgba(0,0,0,0.2);
-        }
+nav ul{
 
-        .theme-icon {
-            width: 20px;
-            height: 20px;
-        }
+display:flex;
+list-style:none;
 
-        .section-title {
-            text-align: center;
-            margin-bottom: 3rem;
-            position: relative;
-        }
+}
 
-        .section-title h2 {
-            display: inline-block;
-            font-size: 2.5rem;
-            color: var(--primary-color);
-            margin-bottom: 1rem;
-        }
+nav ul li{
 
-        .section-title h2::after {
-            content: '';
-            position: absolute;
-            width: 80px;
-            height: 4px;
-            background-color: var(--secondary-color);
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            border-radius: 2px;
-        }
+margin-left:35px;
 
-        .code-block {
-            background-color: rgba(0,0,0,0.1);
-            padding: 1rem;
-            border-radius: 5px;
-            font-family: monospace;
-            margin: 1rem 0;
-            overflow-x: auto;
-        }
+}
 
-        [data-theme="dark"] .code-block {
-            background-color: rgba(255,255,255,0.1);
-        }
-    </style>
+nav ul li a{
+
+color:white;
+text-decoration:none;
+transition:.3s;
+
+}
+
+nav ul li a:hover{
+
+color:#00d9ff;
+
+}
+
+/* HERO */
+
+.hero{
+
+padding-top:150px;
+padding-bottom:80px;
+text-align:center;
+
+}
+
+.hero h1{
+
+font-size:56px;
+margin-bottom:20px;
+
+}
+
+.hero p{
+
+max-width:800px;
+margin:auto;
+font-size:18px;
+line-height:1.8;
+color:#ddd;
+
+}
+
+/* PROJECT GRID */
+
+.projects{
+
+padding-bottom:100px;
+
+}
+
+.grid{
+
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(340px,1fr));
+gap:35px;
+
+}
+
+.card{
+
+background:rgba(255,255,255,.08);
+
+backdrop-filter:blur(12px);
+
+border-radius:20px;
+
+overflow:hidden;
+
+border:1px solid rgba(255,255,255,.08);
+
+transition:.4s;
+
+}
+
+.card:hover{
+
+transform:translateY(-10px);
+
+box-shadow:0 0 30px rgba(0,217,255,.25);
+
+border-color:#00d9ff;
+
+}
+
+.image{
+
+height:220px;
+
+background:#102433;
+
+display:flex;
+
+justify-content:center;
+
+align-items:center;
+
+font-size:28px;
+
+color:#00d9ff;
+
+font-weight:bold;
+
+}
+
+.content{
+
+padding:30px;
+
+}
+
+.content h2{
+
+margin-bottom:15px;
+
+color:#00d9ff;
+
+}
+
+.content p{
+
+line-height:1.8;
+
+color:#ddd;
+
+margin-bottom:20px;
+
+}
+
+.tags{
+
+display:flex;
+
+flex-wrap:wrap;
+
+gap:10px;
+
+margin-bottom:25px;
+
+}
+
+.tag{
+
+padding:8px 15px;
+
+border-radius:25px;
+
+background:rgba(0,217,255,.15);
+
+border:1px solid #00d9ff;
+
+color:#00d9ff;
+
+font-size:14px;
+
+}
+
+.buttons{
+
+display:flex;
+
+gap:15px;
+
+}
+
+.btn{
+
+padding:12px 24px;
+
+background:#00d9ff;
+
+color:#00131b;
+
+text-decoration:none;
+
+font-weight:600;
+
+border-radius:30px;
+
+transition:.3s;
+
+}
+
+.btn:hover{
+
+transform:translateY(-3px);
+
+box-shadow:0 0 20px #00d9ff;
+
+}
+
+.btn-outline{
+
+background:transparent;
+
+border:2px solid #00d9ff;
+
+color:#00d9ff;
+
+}
+
+/* RESPONSIVE */
+
+@media(max-width:900px){
+
+.hero h1{
+
+font-size:42px;
+
+}
+
+nav{
+
+flex-direction:column;
+
+}
+
+nav ul{
+
+margin-top:20px;
+flex-wrap:wrap;
+justify-content:center;
+
+}
+
+nav ul li{
+
+margin:10px;
+
+}
+
+}
+
+</style>
+
 </head>
+
 <body>
-    <button class="theme-toggle" aria-label="Toggle dark mode">
-        <svg class="theme-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M12 16C14.2091 16 16 14.2091 16 12C16 9.79086 14.2091 8 12 8C9.79086 8 8 9.79086 8 12C8 14.2091 9.79086 16 12 16Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-            <path d="M12 2V4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-            <path d="M12 20V22" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-            <path d="M4.92993 4.92999L6.33993 6.33999" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-            <path d="M17.6599 17.66L19.0699 19.07" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-            <path d="M2 12H4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-            <path d="M20 12H22" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-            <path d="M6.33993 17.66L4.92993 19.07" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-            <path d="M19.0699 4.92999L17.6599 6.33999" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
-        <span>Toggle Theme</span>
-    </button>
-    
-    <header>
-        <h1>Technical Projects</h1>
-        <nav>
-            <a href="index.html">Home</a>
-            <a href="projects.html">Projects</a>
-            <a href="about.html">About</a>
-            <a href="contact.html">Contact</a>
-        </nav>
-    </header>
 
-    <main>
-        <div class="section-title">
-            <h2>My Development Work</h2>
-        </div>
-        
-        <div class="projects-container">
-            <!-- Smart Roadside Assistance System -->
-            <div class="project-card">
-                <div class="project-image">
-                    Smart Roadside Assistance
-                </div>
-                <div class="project-content">
-                    <h2>Smart Roadside Assistance System</h2>
-                    <p>Backend system in Django integrating Google Maps API, geofencing, and Twilio for real-time support during vehicle breakdowns. Features include:</p>
-                    <ul>
-                        <li>Real-time location tracking of service vehicles</li>
-                        <li>Automated dispatch based on proximity and availability</li>
-                        <li>Two-way communication via SMS/voice using Twilio</li>
-                        <li>Geofenced service areas with dynamic pricing</li>
-                    </ul>
-                    
-                    <div class="project-tags">
-                        <span class="project-tag">Python</span>
-                        <span class="project-tag">Django</span>
-                        <span class="project-tag">JavaScript</span>
-                        <span class="project-tag">Twilio</span>
-                        <span class="project-tag">Google Maps API</span>
-                    </div>
-                    
-                    <div class="https://gfncing.onrender.com/">
-                        <a href="https://gfncing.onrender.com/" class="Project link">View Demo</a>
-                        <a href="#" class="project-link secondary">Technical Details</a>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Gachaga OS -->
-            <div class="project-card">
-                <div class="project-image">
-                    Gachaga OS
-                </div>
-                <div class="project-content">
-                    <h2>Gachaga OS</h2>
-                    <p>Custom Linux-based OS built from Qubes OS principles, focusing on security, virtual isolation, and penetration testing tools. Key features:</p>
-                    <ul>
-                        <li>Xen-based virtualization for compartmentalization</li>
-                        <li>Pre-configured security tools (Metasploit, Wireshark, Nmap)</li>
-                        <li>Secure inter-VM communication channels</li>
-                        <li>Custom kernel hardening patches</li>
-                    </ul>
-                    
-                    <div class="code-block">
-                        # Sample build command<br>
-                        $ qubes-builder --setup --config builder-gachaga.conf
-                    </div>
-                    
-                    <div class="project-tags">
-                        <span class="project-tag">Linux</span>
-                        <span class="project-tag">Python</span>
-                        <span class="project-tag">Shell Scripting</span>
-                        <span class="project-tag">Xen</span>
-                    </div>
-                    
-                    <div class="project-links">
-                        <a href="#" class="project-link">View ISO</a>
-                        <a href="#" class="project-link secondary">Build Docs</a>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Python Personal Database -->
-            <div class="project-card">
-                <div class="project-image">
-                    Python Database
-                </div>
-                <div class="project-content">
-                    <h2>Python Personal Database</h2>
-                    <p>Minimalist local database built with Python for storing personal records and activity logs securely. Features include:</p>
-                    <ul>
-                        <li>SQLite backend with custom ORM layer</li>
-                        <li>AES-256 encryption for sensitive data</li>
-                        <li>CLI and TUI interfaces</li>
-                        <li>Data export to JSON/CSV formats</li>
-                    </ul>
-                    
-                    <div class="code-block">
-                        # Example usage<br>
-                        from personaldb import Database<br>
-                        db = Database("mydata.db")<br>
-                        db.insert("journal", {"date": "2023-01-01", "entry": "Project started"})
-                    </div>
-                    
-                    <div class="project-tags">
-                        <span class="project-tag">Python</span>
-                        <span class="project-tag">SQLite</span>
-                        <span class="project-tag">Cryptography</span>
-                    </div>
-                    
-                    <div class="project-links">
-                        <a href="#" class="project-link">View Code</a>
-                        <a href="#" class="project-link secondary">Usage Docs</a>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Pygame Game Engine -->
-            <div class="project-card">
-                <div class="project-image">
-                    Pygame Engine
-                </div>
-                <div class="project-content">
-                    <h2>Pygame Game Engine</h2>
-                    <p>Custom 2D game engine for simple platformers using Pygame with focus on reusable components and level editors. Features:</p>
-                    <ul>
-                        <li>Entity-Component-System architecture</li>
-                        <li>Built-in level editor with JSON export</li>
-                        <li>Sprite animation system</li>
-                        <li>Physics and collision handling</li>
-                    </ul>
-                    
-                    <div class="code-block">
-                        # Creating a game object<br>
-                        player = GameObject()<br>
-                        player.add_component(Sprite("player.png"))<br>
-                        player.add_component(PlatformerController())
-                    </div>
-                    
-                    <div class="project-tags">
-                        <span class="project-tag">Python</span>
-                        <span class="project-tag">Pygame</span>
-                        <span class="project-tag">ECS</span>
-                    </div>
-                    
-                    <div class="project-links">
-                        <a href="#" class="https://gfncing.onrender.com/">Demo Game</a>
-                        <a href="#" class="https://gfncing.onrender.com/">Engine Docs</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </main>
+<canvas id="network"></canvas>
 
-    <footer>
-        <p>&copy; 2025 Nicholas Kiai. All rights reserved.</p>
-    </footer>
+<header>
 
-    <script>
-        // Theme toggle functionality
-        const themeToggle = document.querySelector('.theme-toggle');
-        const currentTheme = localStorage.getItem('theme') || 'light';
+<div class="container">
 
-        if (currentTheme === 'dark') {
-            document.body.setAttribute('data-theme', 'dark');
-            themeToggle.innerHTML = `
-                <svg class="theme-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M21 12.79C20.8427 14.4922 20.2039 16.1144 19.1582 17.4668C18.1126 18.8192 16.7035 19.8458 15.0957 20.4265C13.4879 21.0073 11.748 21.1181 10.0795 20.7461C8.41102 20.3741 6.88299 19.5345 5.67422 18.3258C4.46545 17.117 3.62593 15.589 3.2539 13.9205C2.88187 12.252 2.99271 10.5121 3.57345 8.9043C4.15419 7.29651 5.18082 5.88737 6.53321 4.84175C7.8856 3.79614 9.5078 3.15731 11.21 3C10.2134 4.34827 9.73375 6.00945 9.85849 7.68141C9.98324 9.35338 10.7039 10.9251 11.8894 12.1106C13.0749 13.2961 14.6466 14.0168 16.3186 14.1415C17.9906 14.2663 19.6517 13.7866 21 12.79Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
-                <span>Toggle Theme</span>
-            `;
-        }
+<nav>
 
-        themeToggle.addEventListener('click', () => {
-            let theme = 'light';
-            if (document.body.getAttribute('data-theme') !== 'dark') {
-                document.body.setAttribute('data-theme', 'dark');
-                theme = 'dark';
-                themeToggle.innerHTML = `
-                    <svg class="theme-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M12 16C14.2091 16 16 14.2091 16 12C16 9.79086 14.2091 8 12 8C9.79086 8 8 9.79086 8 12C8 14.2091 9.79086 16 12 16Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                        <path d="M12 2V4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                        <path d="M12 20V22" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                        <path d="M4.92993 4.92999L6.33993 6.33999" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                        <path d="M17.6599 17.66L19.0699 19.07" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                        <path d="M2 12H4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                        <path d="M20 12H22" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                        <path d="M6.33993 17.66L4.92993 19.07" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                        <path d="M19.0699 4.92999L17.6599 6.33999" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                    </svg>
-                    <span>Toggle Theme</span>
-                `;
-            } else {
-                document.body.removeAttribute('data-theme');
-                themeToggle.innerHTML = `
-                    <svg class="theme-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M21 12.79C20.8427 14.4922 20.2039 16.1144 19.1582 17.4668C18.1126 18.8192 16.7035 19.8458 15.0957 20.4265C13.4879 21.0073 11.748 21.1181 10.0795 20.7461C8.41102 20.3741 6.88299 19.5345 5.67422 18.3258C4.46545 17.117 3.62593 15.589 3.2539 13.9205C2.88187 12.252 2.99271 10.5121 3.57345 8.9043C4.15419 7.29651 5.18082 5.88737 6.53321 4.84175C7.8856 3.79614 9.5078 3.15731 11.21 3C10.2134 4.34827 9.73375 6.00945 9.85849 7.68141C9.98324 9.35338 10.7039 10.9251 11.8894 12.1106C13.0749 13.2961 14.6466 14.0168 16.3186 14.1415C17.9906 14.2663 19.6517 13.7866 21 12.79Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                    </svg>
-                    <span>Toggle Theme</span>
-                `;
-            }
-            localStorage.setItem('theme', theme);
-        });
+<div class="logo">
 
-        // Enhanced background interaction
-        document.addEventListener('mousemove', function() {
-            const x = event.clientX / window.innerWidth;
-            const y = event.clientY / window.innerHeight;
-            
-            document.body.style.setProperty('--primary-color', `hsl(${x * 360}, 70%, 60%)`);
-            document.body.style.setProperty('--secondary-color', `hsl(${y * 360}, 70%, 60%)`);
-        });
-    </script>
-</body>
-</html>
+Nicholas Kiai
+
+</div>
+
+<ul>
+
+<li><a href="index.html">Home</a></li>
+
+<li><a href="about.html">About</a></li>
+
+<li><a href="projects.html">Projects</a></li>
+
+<li><a href="contact.html">Contact</a></li>
+
+</ul>
+
+</nav>
+
+</div>
+
+</header>
+
+<div class="container">
+
+<section class="hero">
+
+<h1>My Projects</h1>
+
+<p>
+
+Here are some of the software solutions, platforms and research projects
+I've designed and developed. My focus is on scalable backend systems,
+automation, cloud technologies and intelligent software.
+
+</p>
+
+</section>
+
+<section class="projects">
+
+<div class="grid">
+
+<!-- Project 1 -->
+
+<div class="card">
+
+<div class="image">
+
+Roadside Assistance
+
+</div>
+
+<div class="content">
+
+<h2>Smart Roadside Assistance</h2>
+
+<p>
+
+A Django-powered roadside assistance platform featuring Google Maps,
+real-time provider tracking, geofencing, role-based dashboards,
+notifications and secure authentication.
+
+</p>
+
+<div class="tags">
+
+<span class="tag">Python</span>
+
+<span class="tag">Django</span>
+
+<span class="tag">PostgreSQL</span>
+
+<span class="tag">Google Maps</span>
+
+<span class="tag">Twilio</span>
+
+</div>
+
+<div class="buttons">
+
+<a href="https://gfncing.onrender.com/" class="btn" target="_blank">
+
+Live Demo
+
+</a>
+
+<a href="https://github.com/Nick-gachagay" class="btn btn-outline" target="_blank">
+
+GitHub
+
+</a>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- Project 2 -->
+
+<div class="card">
+
+<div class="image">
+
+TerraIntel
+
+</div>
+
+<div class="content">
+
+<h2>TerraIntel Farm Platform</h2>
+
+<p>
+
+An Agricultural Intelligence and Operations Platform for managing
+livestock, crop farming, finances, production records and AI-powered
+decision support.
+
+</p>
+
+<div class="tags">
+
+<span class="tag">React</span>
+
+<span class="tag">TypeScript</span>
+
+<span class="tag">Django</span>
+
+<span class="tag">AI</span>
+
+<span class="tag">PostgreSQL</span>
+
+</div>
+
+<div class="buttons">
+
+<a href="#" class="btn">
+
+Coming Soon
+
+</a>
+
+<a href="#" class="btn btn-outline">
+
+Details
+
+</a>
+
+</div>
+
+</div>
+
+</div>
