@@ -4,142 +4,113 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Nicholas Kiai | Portfolio</title>
-    <style>
-        :root {
-            --primary-color: #3498db;
-            --secondary-color: #2ecc71;
-            --text-color: #333;
-            --bg-color: #f9f9f9;
-            --header-bg: rgba(255,255,255,0.9);
-            --footer-bg: rgba(238,238,238,0.9);
-            --link-color: #2980b9;
-            --content-bg: rgba(255,255,255,0.8);
-        }
+   <style>
 
-        [data-theme="dark"] {
-            --primary-color: #9b59b6;
-            --secondary-color: #1abc9c;
-            --text-color: #ecf0f1;
-            --bg-color: #2c3e50;
-            --header-bg: rgba(26,37,47,0.9);
-            --footer-bg: rgba(26,37,47,0.9);
-            --link-color: #3498db;
-            --content-bg: rgba(44,62,80,0.8);
-        }
+body{
+margin:0;
+font-family:Arial;
+color:white;
+background:#0f2027;
+overflow-x:hidden;
+}
 
-        body {
-            margin: 0;
-            padding: 0;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            color: var(--text-color);
-            background: linear-gradient(-45deg, var(--primary-color), var(--secondary-color), var(--primary-color));
-            background-size: 400% 400%;
-            animation: gradientBG 15s ease infinite;
-            min-height: 100vh;
-            transition: all 0.5s ease;
-        }
+canvas{
+position:fixed;
+top:0;
+left:0;
+z-index:-1;
+}
 
-        @keyframes gradientBG {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
+nav{
+background:rgba(0,0,0,0.6);
+padding:15px;
+text-align:center;
+}
 
-        header {
-            background-color: var(--header-bg);
-            padding: 1.5rem 2rem;
-            box-shadow: 0 2px 15px rgba(0,0,0,0.1);
-            backdrop-filter: blur(5px);
-        }
+nav a{
+color:white;
+margin:15px;
+text-decoration:none;
+font-weight:bold;
+}
 
-        nav a {
-            margin-left: 15px;
-            color: var(--link-color);
-            text-decoration: none;
-            font-weight: 500;
-            transition: all 0.3s ease;
-        }
+.container{
+width:90%;
+max-width:1000px;
+margin:auto;
+padding:40px;
+}
 
-        nav a:hover {
-            color: var(--secondary-color);
-        }
+.card{
+background:rgba(255,255,255,0.1);
+padding:25px;
+border-radius:10px;
+margin-bottom:25px;
+}
 
-        main {
-            padding: 2rem;
-            max-width: 1000px;
-            margin: 2rem auto;
-        }
+</style>
 
-        section {
-            background-color: var(--content-bg);
-            padding: 2rem;
-            border-radius: 10px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
-            backdrop-filter: blur(5px);
-            margin-bottom: 2rem;
-        }
-
-        h1, h2 {
-            color: var(--primary-color);
-        }
-
-        .intro {
-            text-align: center;
-        }
-
-        .cv-summary {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-        }
-
-        .summary-card {
-            background: rgba(255,255,255,0.1);
-            padding: 1.5rem;
-            border-radius: 8px;
-            border-left: 4px solid var(--primary-color);
-            transition: transform 0.3s ease;
-        }
-
-        .summary-card:hover {
-            transform: translateY(-5px);
-        }
-
-        .skills-container {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.8rem;
-            margin-top: 1rem;
-        }
-
-        .skill-pill {
-            padding: 0.5rem 1rem;
-            background: var(--primary-color);
-            color: white;
-            border-radius: 20px;
-            font-size: 0.9rem;
-        }
-
-        .download-cv {
-            display: inline-block;
-            padding: 0.8rem 1.5rem;
-            background: var(--secondary-color);
-            color: white;
-            text-decoration: none;
-            border-radius: 5px;
-            font-weight: bold;
-            margin-top: 1rem;
-            transition: all 0.3s ease;
-        }
-
-        footer {
-            background-color: var(--footer-bg);
-            text-align: center;
-            padding: 1.5rem;
-            backdrop-filter: blur(5px);
-        }
-    </style>
 </head>
+<canvas id="network"></canvas>
+
+<script>
+
+const canvas = document.getElementById("network");
+const ctx = canvas.getContext("2d");
+
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+
+let particles = [];
+
+for(let i=0;i<80;i++){
+particles.push({
+x:Math.random()*canvas.width,
+y:Math.random()*canvas.height,
+vx:(Math.random()-0.5)*1,
+vy:(Math.random()-0.5)*1
+});
+}
+
+function animate(){
+
+ctx.clearRect(0,0,canvas.width,canvas.height);
+
+particles.forEach(p=>{
+
+p.x+=p.vx;
+p.y+=p.vy;
+
+if(p.x<0||p.x>canvas.width)p.vx*=-1;
+if(p.y<0||p.y>canvas.height)p.vy*=-1;
+
+ctx.beginPath();
+ctx.arc(p.x,p.y,2,0,Math.PI*2);
+ctx.fillStyle="white";
+ctx.fill();
+
+particles.forEach(p2=>{
+let dist=Math.hypot(p.x-p2.x,p.y-p2.y);
+if(dist<120){
+ctx.beginPath();
+ctx.moveTo(p.x,p.y);
+ctx.lineTo(p2.x,p2.y);
+ctx.strokeStyle="rgba(255,255,255,0.1)";
+ctx.stroke();
+}
+});
+
+});
+
+requestAnimationFrame(animate);
+
+}
+
+animate();
+
+</script>
+
+<body>
 <body>
     <header>
         <h1>Nicholas Kiai</h1>
